@@ -8,9 +8,10 @@ use App\Http\Controllers\Location;
 Route::group([ 'middleware' => type_admin::class ],function ($router){
 
     Route::post('add_user', Add_user::class . '@add_user')->middleware(type_admin::class);
-    Route::post('add_location',Location::class.'@add_location');
 
     });
+
+    Route::post('add_location',Location::class.'@add_location');
 
 
 

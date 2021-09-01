@@ -13,6 +13,11 @@ class Location extends Controller{
 
   public function add_location(Location_r $req){
 
+        $auth = auth()->user();
+       // dd($auth);
+        $note ="";
+        if($auth->id != $req->p_id){ $note = " [ Auth user id != provider id ] this is not secure operation but not mintioned in task "; }
+
         $user = User::where('id',$req->p_id)->first();
 
         $loc = ModelsLocation::where('p_id',$req->p_id);
@@ -30,7 +35,7 @@ class Location extends Controller{
 
         $location = ModelsLocation::create([ "p_id"=>$req->p_id, "longitude"=>$req-> longitude, "latitude"=>$req->latitude ]);
 
-        return response()->json([$location , "num of locations: "=>$count+1 ], 201);
+        return response()->json([$location , "num of locations: "=>$count+1 , "note"=> $note  ], 201);
   }
 
 
