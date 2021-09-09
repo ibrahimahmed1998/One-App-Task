@@ -25,11 +25,12 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 //     Route::get('get_location/{user_name}', Location::class . '@get_location');
 // });
 
-// Route::group(['domain' => '{subdomain}.oneapp.com'], function () {
-//     Route::any('/', function ($subdomain) {
-//         return 'Subdomain ' . $subdomain;
-//     });
-// });
+
+Route::group(['domain' => '{subdomain}.oneapp.com'], function () {
+    Route::any('/', function ($subdomain) {
+        return 'Subdomain ' . $subdomain;
+    });
+});
 
 
  Route::get('get_location/{user_name}', Location::class . '@get_location');
